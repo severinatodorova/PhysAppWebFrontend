@@ -1,0 +1,133 @@
+<div>
+    
+
+    <br>
+    
+  <mat-card class='selectedUser'>
+      <button mat-raised-button color="accent" routerLink="/list">Back</button>
+      <button mat-raised-button color="accent" (click)="myFunction()">History</button>
+     
+    <section class="mat-typography">
+      <h3>Selected User</h3>
+    </section>
+  
+    <mat-divider></mat-divider>
+    <br>
+    
+    <form [formGroup]= "updateForm" class="select-form">
+  
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Name" formControlName="name" #name>
+      </mat-form-field>
+  
+       <mat-form-field class="field-full-width">
+        <input matInput placeholder="CPR" formControlName="cpr" #cpr>
+      </mat-form-field>
+  
+      <mat-form-field class="field-full-width">
+          <input matInput placeholder="Diagnose" formControlName="diagnose" #diagnose>
+        </mat-form-field>
+  
+     <mat-form-field class="field-full-width">
+          <input matInput placeholder="Condition" formControlName="condition" #condition>
+         </mat-form-field> 
+   
+        
+     <mat-form-field class="field-full-width">
+        <input matInput placeholder="Email" formControlName="email" #email>
+      </mat-form-field>
+      
+      <mat-form-field class="field-full-width">
+          <input matInput placeholder="Phone" formControlName="phone" #phone>
+        </mat-form-field>
+
+        
+            <div
+            *ngIf="user.dizzyLog && user.dizzyLog !== 0"
+            style="display: block"
+          >
+            <canvas
+              baseChart
+              [datasets]="chartData"
+              [labels]="chartLabels"
+              [options]="chartOptions"
+              [legend]="chartLegend"
+              [chartType]="chartType"
+            ></canvas>
+          </div>
+      <mat-divider></mat-divider>  
+      <br>
+    </form> 
+    
+    <div *ngIf="show" class="history">        
+      <ul>
+            <li *ngFor="let excercise of user.completed"> 
+              <h2 class="exTitle">
+              {{excercise.name}}
+              {{excercise.date}} 
+              <br>
+              </h2>
+              <button type="submit" (click)="deleteExcerciseToUser(excercise._id)"  mat-raised-button color="primary">Delete</button>   
+            </li>
+          </ul>
+    </div>
+  </mat-card>
+
+  <div class="userExList">
+      <ul>
+          <li *ngFor="let excercise of user.excercises">
+            <h2 class="exTitle">
+            {{excercise.name}}
+            <br>
+            </h2>
+            <img src="{{excercise.imgURI}}">
+            <br>
+            <p class="exDescription">
+            {{excercise.description}}
+            <br>
+          </p>
+            <button type="submit" (click)="deleteExcerciseToUser(excercise._id)"  mat-raised-button color="primary">Delete</button>   
+          </li>
+        </ul>
+  </div>
+
+  <mat-card class='allEx'>
+      <!-- <button mat-raised-button color="primary" routerLink="/createEx"> Create New Excercise</button> -->
+      <button mat-raised-button color="primary" routerLink="/listEx"> Back to Excercises</button>
+      <br>
+    
+    <table mat-table [dataSource] = "excercises">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef= "let element">{{element.name}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="imgURI" >
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef= "let element"><img class="listImage" [src]="element.imgURI"/></td>
+      </ng-container>
+
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef>Description</th>
+        <td mat-cell *matCellDef= "let element">{{element.description}}</td>
+      </ng-container>
+      
+      <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef class="mat-column-right">Action</th>
+            <td mat-cell *matCellDef= "let element" class="mat-column-right"> 
+              <button mat-button color="primary" (click) = "addExcerciseToUser(element._id)">Add</button>
+            </td>
+       </ng-container>
+
+               
+      <tr mat-header-row *matHeaderRowDef="displayedColumnsExcercise"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumnsExcercise;"></tr>
+    </table>
+
+    
+ 
+  </mat-card>
+  
+  </div> 
+
+ 

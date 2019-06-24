@@ -1,0 +1,34 @@
+<div>
+    <br>
+  <mat-card>
+  
+    <section class="mat-typography">
+      <h3>Create A New Excercise</h3>
+    </section>
+  
+    <mat-divider></mat-divider>
+    <br>
+    
+    <form [formGroup]= "createForm" class="create-form">
+  
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder=" Excercise name" formControlName="Name" #name>
+      </mat-form-field>
+  
+       <mat-form-field class="field-full-width">
+        <input matInput placeholder="Image URI" formControlName="imgURI" #imgURI>
+      </mat-form-field>
+  
+      <mat-form-field class="field-full-width">
+          <input matInput placeholder="Description" formControlName="description" #description>
+        </mat-form-field>          
+  
+      <mat-divider></mat-divider>  
+      <br>
+      <button mat-raised-button color="accent" routerLink="/listEx">Back</button>
+      <button type="submit" (click)="addExcercise(name.value, imgURI.value, description.value)"  mat-raised-button color="primary">Save Now!</button>   
+  
+    </form> 
+  </mat-card>
+  
+  </div> 

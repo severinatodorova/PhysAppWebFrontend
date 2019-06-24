@@ -1,0 +1,64 @@
+.select-form{
+    min-width: 100px;
+    width: 100%;
+}
+
+.field-full-width{
+    width: 100%;
+}
+
+.mat-card {
+    width: 20%;
+    background: #408685;
+    box-shadow: none;
+  }
+
+.allEx {
+    float: right;
+    width:50%;
+}
+
+.selectedUser {
+    float: left;
+}
+
+.userExList{
+    width:25%;
+    display: inline-block;
+    background-color: #ceeeee;
+}
+
+.userExList ul {
+    width: 80%;
+}
+
+ul li {
+    list-style: none;
+    background-color: #c1bdbd;
+    padding: 6%;
+    margin-bottom: 5%;
+    border-radius: 31px;
+}
+
+img {
+    width: 100%;
+}
+
+.listImage {
+    width: 50%;
+}
+div {
+    background-color: #408685;
+}
+
+button.mat-raised-button.mat-accent {
+    margin-bottom: 20px;
+}
+
+.mat-table {
+    background: #408685;
+}
+
+.history{
+    display:block;
+}

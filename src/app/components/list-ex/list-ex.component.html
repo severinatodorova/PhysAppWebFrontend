@@ -1,0 +1,40 @@
+
+  <div>
+      <br>
+    
+      <mat-card>
+          <button mat-raised-button color="primary" routerLink="/createEx"> Create New Excercise</button>
+          <button mat-raised-button color="primary" routerLink="/list"> Back to users</button>
+          <br>
+        
+        <table mat-table [dataSource] = "excercises">
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>name</th>
+            <td mat-cell *matCellDef= "let element">{{element.name}}</td>
+          </ng-container>
+    
+          <ng-container matColumnDef="imgURI">
+            <th mat-header-cell *matHeaderCellDef>imgURI</th>
+            <td mat-cell *matCellDef= "let element">{{element.imgURI}}</td>
+          </ng-container>
+    
+          <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef>Description</th>
+            <td mat-cell *matCellDef= "let element">{{element.description}}</td>
+          </ng-container>
+          
+          <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef class="mat-column-right">Action</th>
+                <td mat-cell *matCellDef= "let element" class="mat-column-right"> 
+                  <button mat-button color="primary" (click) = "editExcercise(element._id)">Edit</button>
+                  <button mat-button color="warn" (click) = "deleteExcercise(element._id)">Delete</button>
+                </td>
+           </ng-container>
+
+                   
+          <tr mat-header-row *matHeaderRowDef="displayedColumnsExcercise"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumnsExcercise;"></tr>
+        </table>
+     
+      </mat-card>
+    </div>
